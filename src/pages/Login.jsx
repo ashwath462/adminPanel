@@ -29,10 +29,9 @@ const Login = ({SetUserLogin}) => {
           withCredentials: true,
         })
         .then(res =>{
-        // alert("hello");
           if(res&&res.data&&res.data.admindata){
             SetUserLogin(res.data.admindata)
-            localStorage.setItem("user", JSON.stringify(res.data.admindata));
+            localStorage.setItem("admin", JSON.stringify(res.data.admindata));
             setCookie("jwtoken", res.data.token);
             alert("Logged in successfully")
             // console.log(res.data);
