@@ -36,7 +36,7 @@ const Register = () => {
           axios.post(`${URL}signup-admin`, user)
           .then(res => {
             console.log(res);   
-            if(res.data){
+            if(res&&res.data&&res.data.admindata){
               alert("Registered successfully")
                 }else{
                   alert("connect to internet")
