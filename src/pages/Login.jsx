@@ -4,6 +4,7 @@ import { useNavigate  } from "react-router-dom";
 import axios from 'axios';
 
 const URL = "https://infinite-sands-08332.herokuapp.com/";
+// const URL = "http://localhost:9000/";
 const Login = ({SetUserLogin}) => {
     const history = useNavigate ()
     const [user, setUser] = useState({
@@ -29,16 +30,17 @@ const Login = ({SetUserLogin}) => {
           withCredentials: true,
         })
         .then(res =>{
+        // alert("hello");
           if(res&&res.data&&res.data.admindata){
             SetUserLogin(res.data.admindata)
-            localStorage.setItem("admin", JSON.stringify(res.data.admindata));
+            localStorage.setItem("user", JSON.stringify(res.data.admindata));
             setCookie("jwtoken", res.data.token);
             alert("Logged in successfully")
             // console.log(res.data);
             history('/');
           }
           else{
-            alert("connect to internet")
+            alert("Server side issue")
           }
         }).catch(err=>{
           console.log(err);

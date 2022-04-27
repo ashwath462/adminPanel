@@ -4,6 +4,7 @@ import { useNavigate  } from "react-router-dom";
 import axios from 'axios';
 
 const URL = "https://infinite-sands-08332.herokuapp.com/";
+// const URL = "http://localhost:9000/";
 const Register = () => {
     const history = useNavigate ()
     const [user, setUser] = useState({
@@ -36,7 +37,7 @@ const Register = () => {
           axios.post(`${URL}signup-admin`, user)
           .then(res => {
             console.log(res);   
-            if(res&&res.data&&res.data.admindata){
+            if(res.data){
               alert("Registered successfully")
                 }else{
                   alert("connect to internet")
